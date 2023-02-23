@@ -2,12 +2,17 @@ import './App.css';
 
 import React, { useState } from 'react';
 
+// import {
+//   atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt
+// } from 'mathjs';
+
 import {
-  atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt
+   evaluate
 } from 'mathjs';
 
-import * as math from "mathjs";
-import { click } from '@testing-library/user-event/dist/click';
+
+
+// import { click } from '@testing-library/user-event/dist/click';
 
 
 // import { atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt } from 'mathjs'
@@ -22,7 +27,6 @@ const App = () => {
   const operations = ["C", "+", "-", "=", "%"];
   const bottom = ["0", "*", "/"]
 
-  const [result, setResult] = useState("0");
   const [currentOperation, setCurrentOperation] = useState("");
 
 
@@ -36,19 +40,13 @@ console.log(val);
 
 
 
-  const input = (val) => {
 
-
-    currentOperation.push(result)
-
-    setResult((numbers) => [...numbers, val + " "]);
-  }
 
 
   const calculateresult = () => {
     const input = number.join("=");
 
-    setResult(evaluate(input));
+    setNumbers(evaluate(input));
   };
 
 
@@ -98,7 +96,7 @@ console.log(val);
           </div>
           <div className="leftSide">
             {operations.map((val, key) => {
-              return <div id="operation" onClick={() => { Click(val)}}>{val}</div>
+              return <div id="operation" onClick={() => { calculateresult(key)}}>{val}</div>
             })}
 
           </div>
