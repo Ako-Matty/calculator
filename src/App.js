@@ -46,7 +46,7 @@ console.log(val);
 
 
   const calculateresult = () => {
-    const input = number.join("");
+    const input = number.join("=");
 
     setResult(evaluate(input));
   };
@@ -74,6 +74,8 @@ console.log(val);
 
 
 
+
+
   return (
     <div className='App'>
       <div className='Bar'>
@@ -85,19 +87,18 @@ console.log(val);
             </div>
             <div className="numbergrid">
               {number.map((val, key) => {
-                return <div id='individualNumber' onClick={() => { Click(val)}} handleclick= {() => { calculateresult("=")}}>{val}</div>;
+                return <div id='individualNumber' onClick={() => { Click(val)}}>{val}</div>;
               })}
-                  <div id='individualNumber'></div>
               {bottom.map((val, key) => {
-                return <div id="bottomoperation">{val} </div>
+                return <div id="bottomoperation" onClick={() => { Click(val)}}>{val}</div>
 
               })}
 
             </div>
           </div>
           <div className="leftSide">
-            {operations.map((val, ley) => {
-              return <div id="operation" onClick={() => { Click(val) }}>{val} </div>
+            {operations.map((val, key) => {
+              return <div id="operation" onClick={() => { Click(val)}}>{val}</div>
             })}
 
           </div>
