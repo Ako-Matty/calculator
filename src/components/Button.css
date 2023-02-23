@@ -1,0 +1,12 @@
+.inputs {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: green;
+    color: white;
+    flex: 1;
+
+
+}
