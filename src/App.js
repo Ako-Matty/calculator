@@ -1,31 +1,15 @@
 import './App.css';
 
 import React, { useState } from 'react';
-
-// import {
-//   atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt
-// } from 'mathjs';
-
-import {
-   evaluate
-} from 'mathjs';
-
-
-
-// import { click } from '@testing-library/user-event/dist/click';
-
-
-// import { atan2, chain, derivative, e, evaluate, log, pi, pow, round, sqrt } from 'mathjs'
-// import { click } from '@testing-library/user-event/dist/click';
-
-
-
+import { evaluate } from 'mathjs';
 
 const App = () => {
 
-  const [number, setNumbers] = useState([7, 8, 9, 4, 5, 6, 1, 2, 3,]);
+  const [number] = useState([7, 8, 9, 4, 5, 6, 1, 2, 3,]);
   const operations = ["C", "+", "-", "=", "%"];
   const bottom = ["0", "*", "/"]
+
+
 
   const [currentOperation, setCurrentOperation] = useState("");
 
@@ -39,39 +23,14 @@ console.log(val);
   }
 
 
-
-
-
-
   const calculateresult = () => {
-    const input = number.join("=");
 
-    setNumbers(evaluate(input));
+    setCurrentOperation(evaluate(currentOperation).toString())
   };
 
-
-
-  // const HandleAddNum = () => {
-
-  //   let calculationsCopy = [...number];
-
-  //   calculationsCopy.push(calculationsCopy[calculationsCopy.length - 1] + 1);
-
-  //   setNumbers(calculationsCopy);
-
-  // }
-
-  // const HandleRemoveNum = (selectedIndex) => {
-  //   let calculationsCopy = [...number];
-
-  //   calculationsCopy.splice(selectedIndex, 1);
-  //   setNumbers(calculationsCopy);
-
-
-  // }
-
-
-
+  const ClearResult = () => {
+    setCurrentOperation("")
+  }
 
 
   return (
@@ -96,7 +55,15 @@ console.log(val);
           </div>
           <div className="leftSide">
             {operations.map((val, key) => {
+              if (val === "C") {
+                return <div id="operation" onClick={() => { ClearResult(key)}}>{val}</div>
+              }
+              if (val === "=") { 
               return <div id="operation" onClick={() => { calculateresult(key)}}>{val}</div>
+              }
+              else {
+                return <div id="operation" onClick={() => { Click(val)}}>{val}</div>
+              }
             })}
 
           </div>
